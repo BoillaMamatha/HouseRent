@@ -1,0 +1,37 @@
+const mongoose = require('mongoose');
+
+// Replace <password> and <dbname> with your actual MongoDB Atlas credentials 
+// or use 'mongodb://localhost:27017/my_database' for a local instance.
+const dbURI = 'mongodb://localhost:27017/my_database';
+
+mongoose.connect(dbURI)
+  .then(() => console.log('Successfully connected to MongoDB.'))
+  .catch((err) => console.error('Connection error:', err));
+const mongoose = require('mongoose');
+
+async function connectDB() {
+  try {
+    // 1. Connect to MongoDB
+    await mongoose.connect('mongodb://127.0.0.1:27017/testConfig');
+    console.log('--- MongoDB Connected ---');
+
+    // 2. Define a Simple Schema
+    const userSchema = new mongoose.Schema({
+      name: String,
+      email: String
+    });
+
+    // 3. Create a Model
+    const User = mongoose.model('User', userSchema);
+    console.log('Model "User" initialized.');
+
+    // 4. Verification Output
+    const state = mongoose.connection.readyState;
+    const states = ['disconnected', 'connected', 'connecting', 'disconnecting'];
+    console.log(`Current Connection Status: ${states[state]}`);
+
+  } catch (error) {
+    console.error('Database connection failed:', error.message);
+  }
+}
+connectDB();
