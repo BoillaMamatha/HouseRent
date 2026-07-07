@@ -1,0 +1,173 @@
+{
+  "name": "house-rent-server",
+  "version": "1.0.0",
+  "description": "House Rent Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
+const mongoose = require("mongoose");
+
+const connectDB = async () => {
+    try {
+        await mongoose.connect("mongodb://127.0.0.1:27017/houseRent");
+
+        console.log("MongoDB Connected");
+    } catch (err) {
+        console.log(err);
+        process.exit(1);
+    }
+};
+module.exports = connectDB;
+const mongoose = require("mongoose");
+
+const UserSchema = new mongoose.Schema(
+{
+    name: {
+        type: String,
+        required: true
+    },
+
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+
+    password: {
+        type: String,
+        required: true
+    },
+
+    role: {
+        type: String,
+        enum: ["admin", "owner", "user"],
+        default: "user"
+    }
+},
+{
+    timestamps: true
+}
+);
+
+module.exports = mongoose.model("User", UserSchema);
+const express = require("express");
+
+const router = express.Router();
+
+router.get("/", (req, res) => {
+
+    res.json({
+        success: true,
+        message: "Admin Route Working"
+    });
+
+});
+
+module.exports = router;
+const express = require("express");
+
+const router = express.Router();
+
+router.get("/", (req, res) => {
+
+    res.json({
+        success: true,
+        message: "Owner Route Working"
+    });
+
+});
+
+module.exports = router;
+const express = require("express");
+
+const router = express.Router();
+
+router.get("/", (req, res) => {
+
+    res.json({
+        success: true,
+        message: "User Route Working"
+    });
+
+});
+
+module.exports = router;
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+
+const connectDB = require("./config/db");
+
+const adminRoutes = require("./routes/adminRoutes");
+const ownerRoutes = require("./routes/ownerRoutes");
+const userRoutes = require("./routes/userRoutes");
+
+const app = express();
+
+connectDB();
+
+app.use(cors());
+app.use(express.json());
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+app.use("/api/admin", adminRoutes);
+app.use("/api/owner", ownerRoutes);
+app.use("/api/user", userRoutes);
+
+app.get("/", (req, res) => {
+
+    res.send(`
+    <h1>HOUSE RENT</h1>
+
+    <ul>
+        <li><b>UserSchema.js</b>: Defines user schema including roles (admin, owner, user), credentials, etc.</li>
+
+        <h2>routes/</h2>
+
+        <li><b>adminRoutes.js</b>: Defines API routes accessible to admins.</li>
+
+        <li><b>ownerRoutes.js</b>: Contains routes for property owners.</li>
+
+        <li><b>userRoutes.js</b>: Public/user routes like signup, login and browsing.</li>
+
+        <h2>uploads/</h2>
+
+        <li>Stores uploaded files/images.</li>
+
+        <h2>Entry Point - server.js</h2>
+
+        <li>Initializes Express server.</li>
+
+        <li>Connects MongoDB.</li>
+
+        <li>Uses middleware (express.json(), cors).</li>
+
+        <li>Registers all route files.</li>
+
+        <li>Listens on port 8000.</li>
+
+    </ul>
+    `);
+
+});
+
+const PORT = 8000;
+
+app.listen(PORT, () => {
+
+    console.log(`Server running on port ${PORT}`);
+
+});
