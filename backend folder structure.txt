@@ -1,0 +1,32 @@
+const express = require("express");
+const app = express();
+app.use(express.json());
+const homeRoutes = require("./routes");
+app.use("/", homeRoutes);
+const PORT = 5000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+const express = require("express");
+const router = express.Router();
+const { home } = require("../controllers/homeController");
+router.get("/", home);
+module.exports = router;
+exports.home = (req, res) => {
+    res.json({
+        success: true,
+        message: "Backend Structure Created Successfully"
+    });
+};
+{
+  "name": "backend-structure",
+  "version": "1.0.0",
+  "description": "Basic Backend Structure",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
