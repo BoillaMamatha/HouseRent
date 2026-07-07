@@ -1,0 +1,176 @@
+import React from "react";
+
+const AdminHome = () => {
+    return (
+        <div>
+            <h1>Admin Dashboard</h1>
+        </div>
+    );
+};
+
+export default AdminHome;
+import React from "react";
+
+const AllBookings = () => {
+    return (
+        <div>
+            <h1>All Bookings</h1>
+        </div>
+    );
+};
+
+export default AllBookings;
+import React from "react";
+
+const AllProperty = () => {
+    return (
+        <div>
+            <h1>All Properties</h1>
+        </div>
+    );
+};
+
+export default AllProperty;
+import React from "react";
+
+const AllUsers = () => {
+    return (
+        <div>
+            <h1>All Users</h1>
+        </div>
+    );
+};
+
+export default AllUsers;
+import React from "react";
+
+const Home = () => {
+    return (
+        <div>
+            <h1>Welcome to House Rent</h1>
+        </div>
+    );
+};
+
+export default Home;
+import React from "react";
+
+const Login = () => {
+    return (
+        <div>
+            <h1>Login Page</h1>
+        </div>
+    );
+};
+
+export default Login;
+import React from "react";
+
+const Register = () => {
+    return (
+        <div>
+            <h1>Register Page</h1>
+        </div>
+    );
+};
+
+export default Register;
+import React from "react";
+
+const ForgotPassword = () => {
+    return (
+        <div>
+            <h1>Forgot Password</h1>
+        </div>
+    );
+};
+
+export default ForgotPassword;
+import React from "react";
+
+const Toast = () => {
+    return (
+        <div>
+            Toast Component
+        </div>
+    );
+};
+
+export default Toast;
+import React from "react";
+
+const AddProperty = () => {
+    return (
+        <div>
+            <h1>Add Property</h1>
+        </div>
+    );
+};
+
+export default AddProperty;
+import React from "react";
+
+const OwnerHome = () => {
+    return (
+        <div>
+            <h1>Owner Dashboard</h1>
+        </div>
+    );
+};
+
+export default OwnerHome;
+import React from "react";
+
+const AllProperties = () => {
+    return (
+        <div>
+            <h1>Owner Properties</h1>
+        </div>
+    );
+};
+
+export default AllProperties;
+import React from "react";
+
+const AllBookings = () => {
+    return (
+        <div>
+            <h1>Owner Bookings</h1>
+        </div>
+    );
+};
+
+export default AllBookings;
+import React from "react";
+
+const RenterHome = () => {
+    return (
+        <div>
+            <h1>Renter Dashboard</h1>
+        </div>
+    );
+};
+
+export default RenterHome;
+import React from "react";
+
+const AllProperties = () => {
+    return (
+        <div>
+            <h1>Available Properties</h1>
+        </div>
+    );
+};
+
+export default AllProperties;
+import React from "react";
+
+const AllPropertiesCards = () => {
+    return (
+        <div>
+            <h2>Property Card</h2>
+        </div>
+    );
+};
+
+export default AllPropertiesCards;
