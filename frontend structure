@@ -1,0 +1,257 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./styles/App.css";
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import AddHouse from "./pages/AddHouse";
+import Profile from "./pages/Profile";
+import HouseDetails from "./pages/HouseDetails";
+function App() {
+  return (
+    <BrowserRouter>
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/add-house" element={<AddHouse />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/house/:id" element={<HouseDetails />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+export default App;
+import { Link } from "react-router-dom";
+function Navbar() {
+  return (
+    <nav className="navbar">
+      <h2>House Rent</h2>
+
+      <div>
+        <Link to="/">Home</Link>
+
+        <Link to="/add-house">Add House</Link>
+
+        <Link to="/profile">Profile</Link>
+
+        <Link to="/login">Login</Link>
+      </div>
+    </nav>
+  );
+}
+export default Navbar;
+import HouseCard from "../components/HouseCard";
+function Home() {
+  return (
+    <div className="container">
+
+      <h1>Available Houses</h1>
+
+      <div className="grid">
+
+        <HouseCard
+          title="2BHK Apartment"
+          location="Hyderabad"
+          price="₹12,000/month"
+        />
+
+        <HouseCard
+          title="3BHK Villa"
+          location="Bangalore"
+          price="₹25,000/month"
+        />
+
+        <HouseCard
+          title="1BHK Flat"
+          location="Chennai"
+          price="₹8,000/month"
+        />
+
+      </div>
+
+    </div>
+  );
+}
+export default Home;
+function HouseCard({ title, location, price }) {
+  return (
+    <div className="card">
+
+      <img
+        src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600"
+        alt="house"
+      />
+
+      <h3>{title}</h3>
+
+      <p>{location}</p>
+
+      <h4>{price}</h4>
+
+      <button>View Details</button>
+
+    </div>
+  );
+}
+export default HouseCard;
+function Login() {
+  return (
+    <div className="form">
+
+      <h2>Login</h2>
+
+      <input type="email" placeholder="Email" />
+
+      <input type="password" placeholder="Password" />
+
+      <button>Login</button>
+
+    </div>
+  );
+}
+export default Login;
+function Register() {
+  return (
+    <div className="form">
+
+      <h2>Register</h2>
+
+      <input placeholder="Name" />
+
+      <input placeholder="Email" />
+
+      <input placeholder="Password" />
+
+      <button>Register</button>
+
+    </div>
+  );
+}
+export default Register;
+function AddHouse() {
+  return (
+    <div className="form">
+
+      <h2>Add House</h2>
+
+      <input placeholder="House Name" />
+
+      <input placeholder="Location" />
+
+      <input placeholder="Rent Price" />
+
+      <button>Add House</button>
+
+    </div>
+  );
+}
+export default AddHouse;
+function Profile() {
+  return (
+    <div className="container">
+      <h2>User Profile</h2>
+      <p>Name : Archana</p>
+      <p>Email : archana@gmail.com</p>
+    </div>
+  );
+}
+export default Profile;
+function HouseDetails() {
+  return (
+    <div className="container">
+
+      <h1>House Details</h1>
+
+      <img
+        src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800"
+        alt="house"
+        width="500"
+      />
+
+      <h2>2BHK Apartment</h2>
+
+      <p>Location : Hyderabad</p>
+
+      <p>Rent : ₹12,000/month</p>
+
+    </div>
+  );
+}
+export default HouseDetails;
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f5f5f5;
+}
+.navbar {
+  background: royalblue;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
+.container {
+  padding: 30px;
+}
+.grid {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+.card {
+  width: 280px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 8px gray;
+  overflow: hidden;
+}
+.card img {
+  width: 100%;
+  height: 180px;
+}
+.card h3,
+.card p,
+.card h4 {
+  margin-left: 15px;
+}
+.card button {
+  width: 90%;
+  margin: 15px;
+  padding: 10px;
+  background: royalblue;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.form {
+  width: 350px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.form input {
+  padding: 10px;
+.form button {
+  padding: 10px;
+  background: royalblue;
+  color: white;
+  border: none;
+}
